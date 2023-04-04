@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 1</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <h1>Ogni parola con maiuscola</h1>
+
+    <p>
+        Scrivi un programma che accetta una frase come parametro e imposta in upper-case l’iniziale di ogni singola parola.
+    </p>
+
+    <p id="risultato"></p>
+
+    <script>
+        var elRisultato = document.getElementById('risultato');
+
+        function capitalize(str) {
+            str = str.split(' ');
+
+            for (let i = 0; i < str.length; i++) {
+                str[i] = str[i][0].toUpperCase() + str[i].substring(1);
+            }
+            return str.join(' ');
+        }
+
+        elRisultato.innerHTML = capitalize('Guarda come siamo belle tutte maiuscole!');
+    </script>
+</body>
+
+</html>

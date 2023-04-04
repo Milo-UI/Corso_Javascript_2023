@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 1</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <h1>Indovina il giorno</h1>
+
+    <p>
+        Scrivi un programma con due funzioni, la prima prende in ingresso un intero e verifica se sia compreso nel range da 1 a 7. <br>
+        Se è compreso, la funzione restituirà TRUE, se non è compreso restituirà FALSE.
+    </p>
+
+    <p>
+        La seconda funzione: <br>
+        - nel caso la prima restituisca TRUE visualizza il giorno della settimana corrispondente, considerando la seguente corrispondenza: <br>
+        1 = Lunedì <br>
+        ... <br>
+        7 = Domenica <br>
+        - nel caso il giorno non sia compreso nel range, la funzione dovrà restituire un messaggio d'errore simile a questo: 'Peccato, non posso indovinare il giorno.'
+    </p>
+
+    <div id="risultato"></div>
+
+    <script>
+        var elRisultato = document.getElementById('risultato');
+
+        function verificaNumero(num) {
+            if (num >= 1 && num <= 7) {
+                return true;
+            }
+            return false
+        }
+
+        function restituisciGiorno(num) {
+            var giorni = [
+                'Lunedì',
+                'Martedì',
+                'Mercoledì',
+                'Giovedì',
+                'Venerdì',
+                'Sabato',
+                'Domenica'
+            ];
+
+            if (verificaNumero(num)) {
+                elRisultato.innerHTML = giorni[num - 1];
+            } else {
+                elRisultato.innerHTML = 'Peccato, non posso indovinare il giorno';
+            }
+        }
+
+        restituisciGiorno(8);
+    </script>
+</body>
+
+</html>

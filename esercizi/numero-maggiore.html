@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 1</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <h1>Numero maggiore</h1>
+
+    <p>
+        Scrivi un programma che riesca a stabilire quale dei due numeri forniti dall'utente è maggiore dell'altro.
+    </p>
+
+    <input type="number" name="" id="n1">
+    <input type="number" name="" id="n2">
+
+    <button onclick="maggioreMinore()">Cliccami</button>
+
+    <div id="risultato"></div>
+
+    <script>
+        var elRisultato = document.getElementById('risultato');
+
+        function maggioreMinore() {
+            var n1 = document.getElementById('n1').value;
+            var n2 = document.getElementById('n2').value;
+
+            if (n1 > n2) {
+                elRisultato.innerHTML = n1 + ' è maggiore di ' + n2;
+            } else if (n2 > n1) {
+                elRisultato.innerHTML = n2 + ' è maggiore di ' + n1;
+            } else {
+                elRisultato.innerHTML = n1 + ' e ' + n2 + ' sono uguali.';
+            }
+        }
+    </script>
+</body>
+
+</html>

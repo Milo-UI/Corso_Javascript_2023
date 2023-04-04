@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 1</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <h1>Conta il numero</h1>
+
+    <p>
+        Scrivi una funzione che dato un numero intero (massimo 9999) conti da quante cifre è formato.
+    </p>
+
+    <p>
+        Esempi: <br>
+        Input: numero = 9 <br>
+        Output: 1 cifra
+    </p>
+
+    <p>
+        Input: numero = 245 <br>
+        Output: 3 cifre
+    </p>
+
+    <div id="risultato"></div>
+
+    <script>
+        var elRisultato = document.getElementById('risultato');
+
+        function contaNumero(num) {
+            var numeroAsString = num.toString();
+            // var conta = 1;
+
+            // for (let i = 1; i < numeroAsString.length; i++) {
+            //     conta++;
+            // }
+            // console.log(conta);
+
+            if (numeroAsString.length < 5) {
+                return 'Il numero ' + numeroAsString + ' è composto da ' + numeroAsString.length + ' cifra/e';
+            }
+            return 'Il numero è troppo grande';
+        }
+
+        elRisultato.innerHTML = contaNumero(77);
+    </script>
+</body>
+
+</html>

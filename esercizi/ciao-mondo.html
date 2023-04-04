@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 1</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <h1>Ciao Mondo</h1>
+
+    <p>
+        Scrivi un programma che stampa tutti gli interi da 1 a un numero specificato da te o dall'utente. Per i multipli di 3 stampa “Ciao”, per i multipli di 5 stampa “Mondo”. Per i multipli sia di 3 , sia di 5 stamperà “Ciao, Mondo”
+    </p>
+
+    <p id="risultato"></p>
+
+    <script>
+        var elRisultato = document.getElementById('risultato');
+
+        function stampaNumeri(num) {
+            for (let i = 1; i <= num; i++) {
+                if (i % 3 == 0 && i % 5 == 0) {
+                    elRisultato.innerHTML += i + ' Ciao Mondo!<br>';
+                } else if (i % 3 == 0) {
+                    elRisultato.innerHTML += i + ' Ciao<br>';
+                } else if (i % 5 == 0) {
+                    elRisultato.innerHTML += i + ' Mondo<br>';
+                } else {
+                    elRisultato.innerHTML += i + '<br>';
+                }
+            }
+        }
+
+        stampaNumeri(100);
+    </script>
+</body>
+
+</html>
