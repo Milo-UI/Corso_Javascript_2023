@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 - 02 - Get Elements</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <p id="uno"></p>
+
+    <ul>
+        <li id="one" class="blue">Frutta</li>
+        <li id="two" class="blue">Verdura</li>
+        <li id="three" class="blue">Birra</li>
+        <li id="four" class="blue">Pizza</li>
+    </ul>
+
+    <script>
+        // getElementById
+        var uno = document.getElementById('uno');
+        uno.textContent = 'Ciao questa è la tua spesa';
+        console.log(typeof uno);
+        console.log(uno.innerHTML);
+        console.log(uno.innerText);
+        console.log(uno.textContent);
+
+        uno.className = 'red';
+
+        // getElementsByTagName
+        var elementiLi = document.getElementsByTagName('li');
+        console.log(elementiLi);
+
+        // className
+        for (let i = 0; i < elementiLi.length; i++) {
+            elementiLi[i].className = 'red';
+        }
+
+        // querySelector
+        var elSingolo = document.querySelector('li#one');
+        elSingolo.innerHTML = 'Mele';
+
+        var elSingolo2 = document.querySelector('li.red'); // recupera solo la prima occorrenza
+        console.log(elSingolo2);
+
+        var elSingolo3 = document.querySelector('li'); // recupera solo la prima occorrenza
+        console.log(elSingolo3);
+
+        // querySelectorAll
+        var els = document.querySelectorAll('li.red')
+        console.log(els);
+
+        // classList.add e classList.remove
+        if (els.length > 0) {
+            for (let i = 0; i < els.length; i++) {
+                // els[i].className = 'fontUp'; // sostituisce il nome della classe
+                els[i].classList.add('fontUp'); // aggiungo alla classe red la classe fontUp
+                els[i].classList.remove('red');
+            }
+        }
+
+        var ulEL = document.querySelector('ul');
+
+        console.log(ulEL.firstElementChild);
+        console.log(ulEL.firstChild);
+
+        var itemDue = document.getElementById('two');
+        var elText = itemDue.firstChild.nodeValue;
+        elText = elText.replace('Verdura', 'Caramelle');
+        itemDue.firstChild.nodeValue = elText;
+
+        // creare elementi
+        var nuovoEl = document.createElement('li');
+        // nuovoEl.innerHTML = 'Acqua';
+
+        // creare un nodo di testo
+        var nuovoTxt = document.createTextNode('Acqua');
+
+        // aggancio il testo al genitore
+        nuovoEl.appendChild(nuovoTxt);
+        console.log(nuovoEl);
+
+        ulEL.appendChild(nuovoEl)
+
+        // elimino un elemento
+        var elDaRimuovere = document.getElementsByTagName('li')[1];
+        ulEL.removeChild(elDaRimuovere);
+
+        // set attribute
+        // ulEL.className = 'bg-white'
+        ulEL.setAttribute('class', 'bg-white bordo');
+
+        var quartoItem = document.getElementById('four');
+        if (quartoItem.hasAttribute('class')) {
+            quartoItem.removeAttribute('class');
+        }
+    </script>
+</body>
+
+</html>

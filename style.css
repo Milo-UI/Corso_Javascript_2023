@@ -21,3 +21,19 @@ h5,
 h6 {
 	font-family: "Montserrat", sans-serif;
 }
+
+.red {
+	color: red;
+}
+
+.fontUp {
+	font-size: 3rem;
+}
+
+.bg-white {
+	background-color: rgb(147, 147, 147);
+}
+
+.bordo {
+	border: 1rem dashed tomato;
+}
