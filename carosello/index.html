@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carosello cinema</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Cinemilo</h1>
+
+        <div class="carosello">
+
+            <a id="linkFilm" href="" target="_blank">
+                <h2 id="titolo"></h2>
+            </a>
+
+            <div class="container-loc-bott">
+                <button id="prev" onclick="prevMovie()">
+                    <i class="fa-solid fa-angle-left"></i>
+                </button>
+                <img id="locandina" src="" alt="">
+                <button id="next" onclick="nextMovie()">
+                    <i class="fa-solid fa-angle-right"></i>
+                </button>
+            </div>
+
+            <ul id="attori"></ul>
+
+            <p id="durata"></p>
+            <p id="anno"></p>
+            <p id="genere"></p>
+
+        </div>
+
+    </div>
+
+    <script>
+        /*
+            Creare carosello che riporti le informazioni di un film in ogni 'scheda'. Il carosello deve avere un bottone prev e uno next (indicati da icone e non parole), che fanno scorrere l'array dei film, presentandone uno alla volta. I film devono potersi ripetere, ma sempre nello stesso ordine.
+
+            DIVIETO DI TOCCARE L'ARRAY DI FILM
+
+            L'aspetto della pagina deve essere curato, basta che rispetti il wireframe dato.
+
+            --- OPZIONALE ---
+            Il titolo del film e i nomi degli attori, devono diventare dei link alla pagina corrispondente di Wikipedia, ma l'url dovete generarlo voi senza andare a copiare e incollare.
+        */
+
+        var films = [{
+                titolo: 'John Wick',
+                durata: 120,
+                anno: 2014,
+                locandina: 'https://pad.mymovies.it/filmclub/2014/08/105/locandina.jpg',
+                genere: ['Azione', 'Thriller'],
+                attori: ['Keanu Reeves', 'Michael Nyqvist', 'Alfie Allen']
+            },
+            {
+                titolo: 'Interstellar',
+                durata: 180,
+                anno: 2014,
+                locandina: 'https://pad.mymovies.it/filmclub/2014/01/001/locandina.jpg',
+                genere: ['Fantascienza', 'Avventura', 'Drammatico'],
+                attori: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain']
+            },
+            {
+                titolo: 'Ted',
+                durata: 100,
+                anno: 2012,
+                locandina: 'https://pad.mymovies.it/filmclub/2012/02/115/locandina.jpg',
+                genere: ['Commedia', 'Fantastico'],
+                attori: ['Mark Wahlberg', 'Mila Kunis', 'Joel McHale']
+            }
+        ];
+
+        var titolo = document.querySelector('#titolo');
+        var locandina = document.querySelector('#locandina');
+        var attori = document.querySelector('#attori');
+        var durata = document.querySelector('#durata');
+        var anno = document.querySelector('#anno');
+        var genere = document.querySelector('#genere');
+        var linkFilm = document.querySelector('#linkFilm');
+
+        function mostraFilm(indice) {
+            linkFilm.setAttribute('href', 'https://it.wikipedia.org/wiki/' + films[indice].titolo);
+
+            titolo.innerHTML = films[indice].titolo;
+
+            locandina.setAttribute('src', films[indice].locandina);
+            locandina.setAttribute('alt', 'Film in sala: ' + films[indice].titolo);
+
+            attori.innerHTML = '';
+            films[indice].attori.forEach(function(attore) {
+                attori.innerHTML += '<li><a href="https://it.wikipedia.org/wiki/' + attore + '" target="_blank">' + attore + '</a></li>';
+            });
+
+            durata.innerHTML = 'Durata del film: ' + films[indice].durata;
+
+            anno.innerHTML = 'Anno di uscita: ' + films[indice].anno;
+
+            genere.innerHTML = 'Genere: ';
+            films[indice].genere.forEach(function(genereFilm) {
+                genere.innerHTML += '<span>' + genereFilm + '</span>';
+            });
+        }
+
+        var contatore = 0;
+        mostraFilm(contatore);
+
+        var btnPrev = document.querySelector('#prev');
+        var btnNext = document.querySelector('#next');
+
+        function nextMovie() {
+            if (contatore < films.length - 1) {
+                contatore++;
+            } else {
+                contatore = 0;
+            }
+            mostraFilm(contatore);
+        }
+
+        function prevMovie() {
+            if (contatore == 0) {
+                contatore = films.length - 1;
+            } else {
+                contatore--;
+            }
+            mostraFilm(contatore)
+        };
+    </script>
+</body>
+
+</html>

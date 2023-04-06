@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 500;
+	color: #ebebeb;
+	background-color: #252525;
+	padding: 2rem 3rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Montserrat", sans-serif;
+}
+
+.container {
+	max-width: 1200px;
+	padding: 3rem;
+	margin: 0 auto;
+}
+
+.carosello {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.carosello a {
+	color: #ebebeb;
+	transition: all 0.2s;
+}
+
+.carosello a:hover {
+	color: #fff;
+}
+
+#titolo {
+	text-align: center;
+}
+
+#titolo i {
+	margin-left: 0.8rem;
+}
+
+.container-loc-bott {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+	width: 50%;
+}
+
+#prev,
+#next {
+	padding: 0.5rem 0.75rem;
+	border-radius: 0.75rem;
+	cursor: pointer;
+	border: 2px solid #ebebeb;
+	color: #ebebeb;
+	background-color: transparent;
+	transition: all 0.2s;
+}
+
+#prev i,
+#next i {
+	font-size: 1.5rem;
+}
+
+#prev:hover,
+#next:hover {
+	color: #535353;
+	background-color: #ebebeb;
+}
+
+#locandina {
+	width: auto;
+	height: 400px;
+}
+
+#attori {
+	display: flex;
+	justify-content: center;
+	list-style: none;
+	padding-left: 0;
+}
+
+#attori li,
+#genere span {
+	margin-right: 0.5rem;
+}
+
+#attori li:last-child,
+#genere span:last-child {
+	margin-right: 0;
+}
+
+#attori li::after {
+	content: "-";
+	margin-left: 0.5rem;
+}
+
+#genere span::after {
+	content: ",";
+}
+
+#attori li:last-child:after,
+#genere span:last-child:after {
+	content: "";
+}
+
+#durata,
+#anno,
+#genere {
+	text-align: center;
+	margin: 0.5rem 0;
+}
