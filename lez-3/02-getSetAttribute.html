@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 - 02 - getSetAttribute</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <h2>Playlist settimanale</h2>
+
+    <ul id="playlist">
+        <li class="txtViola">Obladì Obladà</li>
+        <li class="txtViola">Beautiful Lie</li>
+        <li class="txtViola">Strawberry Fields</li>
+        <li class="txtViola">Hells Bells</li>
+        <li class="txtViola">Chop Suey</li>
+        <li class="txtViola">Brain Power</li>
+        <li class="txtViola">Bohemian Rapsody</li>
+        <li class="txtViola">My Hero</li>
+        <li class="txtViola">Float On</li>
+        <li class="txtViola">Il Ballo Dell'Estate</li>
+        <li class="txtViola">Non Dormo Mai</li>
+        <li class="txtViola">Parado No Bailao</li>
+        <li class="txtViola">From This Side</li>
+    </ul>
+
+    <h2>Playlist del mese</h2>
+
+    <ul id="playlistMese">
+        <li>Nome canzone</li>
+        <li>Nome canzone</li>
+        <li>Nome canzone</li>
+        <li>Nome canzone</li>
+        <li>Nome canzone</li>
+        <li>Nome canzone</li>
+    </ul>
+
+    <div id="demo" class="txtViola grassetto">
+        <p>
+            Ciao
+        </p>
+    </div>
+
+    <button id="carica">Carica lista</button>
+
+    <script>
+        var primoLi = document.querySelector('ul').firstElementChild;
+
+        if (primoLi.hasAttribute('class')) {
+            var attributo = primoLi.getAttribute('class');
+            console.log(attributo);
+        }
+
+        primoLi.setAttribute('id', 'primoElemento');
+        primoLi.setAttribute('title', 'Nome prodotto: bla bla bla');
+
+        var p = document.querySelector('#demo').children[0];
+        p.setAttribute('class', 'fontUp');
+        console.log(p);
+
+        var demo = document.querySelector('#demo');
+        // demo.innerHTML = '<a href="https://www.example.com">Link</a>';
+
+        const HREF = 'https://www.example.com';
+        const LINK = '<strong>Pagina di esempio <br></strong>';
+
+        var a = document.createElement('a');
+        a.setAttribute('href', HREF);
+        a.innerHTML = LINK;
+
+        // var testo = document.createTextNode(LINK);
+        // a.appendChild(testo);
+
+        demo.appendChild(a);
+
+        var collegamenti = [{
+                href: 'https://www.example.org',
+                link: 'Pagina di prova'
+            },
+            {
+                href: 'https://www.example.org',
+                link: 'Pagina di test'
+            },
+            {
+                href: 'https://www.example.org',
+                link: 'Pagina Automatica'
+            }
+        ]
+
+        function caricaLista() {
+
+            demo.innerHTML = '';
+
+            for (let i = 0; i < collegamenti.length; i++) {
+                var a = document.createElement('a');
+                a.setAttribute('href', collegamenti[i].href);
+                a.innerHTML = collegamenti[i].link + '<br>';
+                demo.appendChild(a);
+            }
+        }
+
+        var btn = document.querySelector('#carica');
+        btn.addEventListener('click', caricaLista, false);
+    </script>
+</body>
+
+</html>

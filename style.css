@@ -21,6 +21,10 @@ h6 {
 	font-family: "Montserrat", sans-serif;
 }
 
+a {
+	color: rgb(233, 158, 158);
+}
+
 .red {
 	color: red;
 }
@@ -35,4 +39,16 @@ h6 {
 
 .bordo {
 	border: 1rem dashed tomato;
+}
+
+.txtViola {
+	color: violet;
+}
+
+.grassetto {
+	font-weight: bold;
+}
+
+.txtOrange {
+	color: orange;
 }

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 - 01 - querySelector</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <h2>Playlist settimanale</h2>
+
+    <ul id="playlist">
+        <li class="txtViola">Obladì Obladà</li>
+        <li class="txtViola">Beautiful Lie</li>
+        <li class="txtViola">Strawberry Fields</li>
+        <li class="txtViola">Hells Bells</li>
+        <li class="txtViola">Chop Suey</li>
+        <li class="txtViola">Brain Power</li>
+        <li class="txtViola">Bohemian Rapsody</li>
+        <li class="txtViola">My Hero</li>
+        <li class="txtViola">Float On</li>
+        <li class="txtViola">Il Ballo Dell'Estate</li>
+        <li class="txtViola">Non Dormo Mai</li>
+        <li class="txtViola">Parado No Bailao</li>
+        <li class="txtViola">From This Side</li>
+    </ul>
+
+    <h2>Playlist del mese</h2>
+
+    <ul id="playlistMese">
+        <li>Nome canzone</li>
+        <li>Nome canzone</li>
+        <li>Nome canzone</li>
+        <li>Nome canzone</li>
+        <li>Nome canzone</li>
+        <li>Nome canzone</li>
+    </ul>
+
+    <div id="demo" class="txtViola grassetto">
+        <p>
+            Ciao
+        </p>
+    </div>
+
+    <script>
+        // var playlist = document.getElementById('playlist').children; // traversing
+        // playlist[0].classList.add('grassetto'); // manipolazione
+        // console.log(playlist);
+
+        // queryselector prende 1 elemento attraverso la sintassi css, ma recupera solo la prima occorrenza
+        var playlist = document.querySelector('#playlist').children;
+        // playlist[0].classList.add('grassetto');
+        [...playlist].forEach(element => {
+            element.classList.add('grassetto');
+            element.classList.remove('txtViola');
+        });
+        console.log(playlist);
+
+        var li = document.querySelector('li').textContent;
+        console.log(li);
+
+        // querySelectorAll
+        var lisTxtViola = document.querySelectorAll('ul#playlist li.txtViola');
+        console.log(lisTxtViola);
+
+        var liSenzaClass = document.querySelectorAll('ul#playlistMese li');
+        // for (let i = 0; i < liSenzaClass.length; i++) {
+        //     liSenzaClass[i].className = 'txtOrange';
+        // }
+
+        [...liSenzaClass].forEach(element => {
+            element.className = 'txtOrange';
+        });
+
+        var demo = document.querySelector('#demo');
+
+        // classList individua la lista delle classi
+        demo.classList.add('fontUp');
+        demo.classList.replace('txtViola', 'txtOrange');
+        demo.classList.remove('grassetto');
+        // demo.className = 'txtOrange';
+
+        console.log(demo.classList);
+    </script>
+</body>
+
+</html>
