@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 - 03 - To Do List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="to-do.css">
+</head>
+
+<body>
+
+    <h1>To Do List</h1>
+
+    <div class="container">
+
+        <div class="form">
+            <h2>Inserisci una task:</h2>
+
+            <label for="item">Item:</label>
+            <input type="text" id="item">
+
+            <label for="data">Data:</label>
+            <input type="date" id="data">
+
+            <button id="btnAggiungi">Aggiungi</button>
+        </div>
+
+        <div class="sez-lista">
+            <h2>To Do List:</h2>
+
+            <ul id="lista"></ul>
+        </div>
+
+    </div>
+
+    <script>
+        /*
+            Creare una to-do list, nella quale è possibile aggiungere una task e la data associata, facendola comparire all'interno della lista con a fianco due bottoni: uno di modifica e uno di eliminazione della task. Ogni task dovrà avere all'inizio una checkbox che, quando spuntata, tira una riga sul nome della task.
+
+            Cliccando su modifica, la task sparisce dalla lista e le informazioni tornano nei campi di input, pronte per essere modificate.
+
+            I bottoni modifica e elimina, non dovranno contenere testo, ma un'icona autoesplicativa ed essere colorati secondo l'azione che compiono.
+
+            Utilizzare Animate.css per far comparire e scomparire le task con un'animazione (es.: fade in e fade out).
+
+            Come sempre, curare l'aspetto grafico e l'usabilità.
+        */
+
+        var btnAggiungi = document.querySelector('#btnAggiungi');
+        var lista = document.querySelector('#lista');
+
+        function aggiungi() {
+            var item = document.querySelector('#item').value;
+            var data = document.querySelector('#data').value;
+
+            var task = document.createElement('li');
+            task.setAttribute('class', 'animate__animated animate__fadeInRight');
+
+            var check = document.createElement('input');
+            check.setAttribute('type', 'checkbox');
+            check.classList.add('done');
+            task.appendChild(check);
+
+            task.innerHTML += ' <span>' + item + '</span> - <span>' + data + '</span>';
+
+            lista.appendChild(task);
+
+            document.querySelector('#item').value = '';
+            document.querySelector('#data').value = '';
+
+            var btnModify = document.createElement('button');
+            btnModify.innerHTML = '<i class="fa-solid fa-marker"></i>';
+            btnModify.setAttribute('class', 'btn-mod');
+            task.appendChild(btnModify);
+
+            btnModify.addEventListener('click', modifica);
+
+            function modifica() {
+                rimuovi();
+                document.querySelector('#item').value = item;
+                document.querySelector('#data').value = data;
+            }
+
+            var btnRemove = document.createElement('button');
+            btnRemove.innerHTML = '<i class="fa-solid fa-trash"></i>';
+            btnRemove.setAttribute('class', 'btn-rem');
+            task.appendChild(btnRemove);
+
+            btnRemove.addEventListener('click', rimuovi);
+
+            function rimuovi() {
+                task.classList.add('animate__animated', 'animate__fadeOutRight');
+
+                setTimeout(() => {
+                    lista.removeChild(task);
+                }, 500);
+            }
+        }
+
+        btnAggiungi.addEventListener('click', aggiungi);
+    </script>
+</body>
+
+</html>
