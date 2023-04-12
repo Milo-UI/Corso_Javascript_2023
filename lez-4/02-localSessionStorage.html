@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 - 02 - Local e Session Storage</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <h1>Intro JSON</h1>
+
+    <button id="btnClear">Pulisci LS</button>
+    <button id="btnSalva">Salva User</button>
+    <button id="btnRec">Recupera info</button>
+
+    <p id="demo"></p>
+
+    <script>
+        var user = {
+            nome: 'Milo',
+            cognome: 'Spandre',
+            sistemaOP: 'Mac',
+            connesso: false
+        };
+
+        var btnSalva = document.getElementById('btnSalva');
+
+        btnSalva.onclick = function() {
+            // Per poter registrare lo user in local o session storage devo trasformarlo in JSON
+            var userJSON = JSON.stringify(user);
+            localStorage.setItem("user", userJSON);
+        }
+
+        var btnClear = document.querySelector('#btnClear');
+
+        btnClear.onclick = function() {
+            // localStorage.clear(); // Azzera completamente la localStorage
+            localStorage.removeItem('user');
+        }
+
+        var btnRec = document.querySelector('#btnRec');
+
+        btnRec.onclick = function() {
+            let demo = document.querySelector('#demo');
+            let info = localStorage.getItem('user'); // Ricevo in formato JSON
+            console.log(info);
+            if (info == null) {
+                demo.innerHTML = "Non c'è nessun utente connesso";
+            } else {
+                let myUser = JSON.parse(info);
+                demo.innerHTML = "L'utente connesso è: " + myUser.nome;
+            }
+        }
+    </script>
+</body>
+
+</html>
