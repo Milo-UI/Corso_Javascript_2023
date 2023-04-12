@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 - 01 - Intro JSON</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <h1>Intro JSON</h1>
+
+    <script>
+        // Funzione costruttore
+        function Utente2(nome, cognome, eta, email, materie) {
+            this.nome = nome;
+            this.cognome = cognome;
+            this.eta = eta;
+            this.email = email;
+            this.materie = materie;
+        }
+
+        var mioUtente = new Utente2('Milo', 'Spandre', 31, 'milo.spandre@mail.com', ['HTML & CSS', 'JavaScript']);
+
+        console.log(mioUtente);
+        console.log(mioUtente.nome);
+
+        // Notazione letterale oggetti JavaScript
+        var utente = {
+            nome: 'Pippo',
+            cognome: 'Rossi',
+            eta: 30,
+            email: 'pippo.rossi@mail.com',
+            materieStudiate: ["Angular", "JavaScript", "Java"]
+        };
+
+        console.log(utente);
+
+        var utenteFormatoJSON = `{
+            "nome": "Pippo",
+            "cognome": "Rossi", 
+            "eta": 30, 
+            "mail": "pippo.rossi@mail.com", 
+            "materieStudiate": ["Angular", "JavaScript", "Java"]
+        }`;
+
+        console.log(utenteFormatoJSON); // string
+        console.log(utenteFormatoJSON.nome); // undefined
+
+        // Trasformo l'utenteFormatoJSON in un utente formato JS
+        var utenteFormatoJS = JSON.parse(utenteFormatoJSON);
+
+        console.log(utenteFormatoJS); // Object
+        console.log(utenteFormatoJS.nome);
+
+        // Se abbiamo la necessità di inviare dati, possiamo utilizzare il metodo inverso
+        var studente = {
+            nome: "Marco",
+            cognome: "Bianchi",
+            scopo: "Imparare a programmare",
+            materieDiStudio: ["Angular", "JavaScript", "Java"],
+
+            connettiAllaLezione: function() {
+                var chiamata = true;
+                if (chiamata) {
+                    console.log('Connettiti alla chiamata');
+                } else {
+                    console.log('La lezione non è ancora cominciata');
+                }
+            }
+        };
+
+        console.log(studente);
+        console.log(typeof studente);
+        console.log(studente.nome);
+
+        // per poter trasferire l'oggetto studente a un'altra tecnologia, lo devo trasformare in JSON
+        // Quando trasformo lo studente in stringa, i metodi non vengono minimamente calcolati o riportati
+        var studenteJSON = JSON.stringify(studente);
+
+        console.log(studenteJSON);
+        console.log(typeof studenteJSON);
+        console.log(studenteJSON.nome);
+
+        // Rendo una stringa l'oggeto utente costruito con la notazione costruttore
+        var utenteJSON = JSON.stringify(mioUtente);
+
+        console.log(utenteJSON);
+
+        // Siccome non posso passare i metodi di un oggetto tramite JSON, se ne ricevo uno, per assegnargli dei metodi, utilizzo la proprietà prototype, ma solo dopo aver creato un costruttore
+        var objRicevuto = '{"nome": "Paola", "cognome": "Rossi", "presenza": "true"}';
+
+        var obj = JSON.parse(objRicevuto);
+
+        console.log(obj);
+
+        // Voglio aggiungere un metodo a obj, ma mi serve un costruttore a cui poterlo aggiungere
+        function ObjCostruttore(nome, presenza) {
+            this.nome = nome;
+            this.presenza = presenza;
+        };
+
+        var objVero = new ObjCostruttore(obj.nome, obj.presenza);
+
+        ObjCostruttore.prototype.annullaPresenza = function() {
+            this.presenza = false;
+        }
+
+        console.log(objVero);
+
+        console.log(objVero.presenza);
+        objVero.annullaPresenza();
+        console.log(objVero.presenza);
+    </script>
+</body>
+
+</html>
