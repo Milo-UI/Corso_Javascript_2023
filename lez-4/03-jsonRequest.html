@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 - 03 - JSON Request</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <p id="demo"></p>
+
+    <script>
+        // Salvo l'URL al quale si trova il file JSON in una variabile
+        let requestURL = 'classe.json';
+        // request è un nuovo oggetto XMLHttpRequest, quindi appunto una richiesta
+        let request = new XMLHttpRequest();
+        // Apriamo una richiesta utilizzando il metodo open() e gli diamo dei dati: l'URL al quale si trova il nostro JSON e il metodo che specifica il tipo di richiesta, in questo caso GET
+        request.open('GET', requestURL);
+        // Settiamo il tipo di risposta che otterremo dalla richiesta
+        request.responseType = 'json';
+        // Infine inviamo la richiesta col metodo send()
+        request.send();
+
+        request.onload = function() {
+            var classe = request.response;
+            console.log(classe);
+            console.log(classe.insegnanti[1].nome);
+            console.log(classe.insegnanti[1]);
+        }
+    </script>
+</body>
+
+</html>

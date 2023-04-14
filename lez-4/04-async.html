@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 - 04 - Async</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <button id="date">Vai</button>
+    <button id="alert">Alert</button>
+
+    <div id="demo"></div>
+
+    <script>
+        var btnDate = document.querySelector('#date');
+        var btnAlert = document.querySelector('#alert');
+        var demo = document.querySelector('#demo');
+
+        // btnDate.addEventListener('click', () => {
+        //     let myDate;
+        //     for (let i = 0; i < 10000000; i++) {
+        //         let date = new Date();
+        //         myDate = date;
+        //     };
+
+        //     console.log(myDate);
+
+        //     let pElem = document.createElement('p');
+        //     pElem.textContent = 'Questo è un paragrafo appena aggiunto.';
+        //     demo.appendChild(pElem);
+        // });
+
+        // btnAlert.addEventListener('click', () => {
+        //     alert('eccomi');
+        // });
+
+        // let response = fetch('https://ak.picdn.net/shutterstock/videos/11773709/thumb/10.jpg');
+        // console.log(response);
+
+        // function loadAsset(url, type, callback) {
+        //     let xhr = new XMLHttpRequest();
+        //     xhr.open('GET', url);
+        //     xhr.responseType = type;
+
+        //     xhr.onload = function() {
+        //         callback(xhr.response);
+        //     }
+
+        //     xhr.send();
+        // };
+
+        // function displayImage(blob) {
+        //     let objectURL = URL.createObjectURL(blob);
+
+        //     let image = document.createElement('img');
+        //     image.src = objectURL;
+        //     demo.appendChild(image);
+        // };
+
+        // loadAsset('https://ak.picdn.net/shutterstock/videos/11773709/thumb/10.jpg', 'blob', displayImage);
+
+        // La fetch va a recuperare il file, promettendo di restituirne il contenuto
+        fetch('classe.json')
+            .then(function(response) { // il then funge da funzione di callback, quindi prende la risposta
+                return response.json(); // prende la risposta e fa un parse del json contenuto nel file
+            })
+            .then(function(data) { // una volta che mi restituisce il json interpretato, lo salvo in classe
+                var classe = data;
+                console.log('Dati: ', classe);
+            })
+            .catch(function(errore) {
+                console.log('La tua fetch ha un problema: ' + errore.message);
+            });
+    </script>
+</body>
+
+</html>
