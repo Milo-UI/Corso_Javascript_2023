@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Pokedex</title>
+    <title>Ricerca Film</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 </head>
 
-<body>
+<body class="bg-dark text-bg-dark">
 
     <!-- 
         Creare una pagina web con Bootstrap con una barra di ricerca, dentro la quale è possibile scrivere il nome di un film e ottenere al di sotto titolo e poster.
@@ -18,9 +18,70 @@
         http://www.omdbapi.com/?t=&apikey=4214e970
     -->
 
+    <div class="container py-5">
+        <div class="row">
+
+            <div class="col-lg-6">
+                <h2 class="mb-4">Cerca un film</h2>
+
+                <input type="text" id="filmTitle" class="form-control mb-4" placeholder="Inserisci il titolo di un film">
+
+                <button id="btnCerca" class="btn btn-primary">Cerca</button>
+            </div>
+
+            <div class="col-lg-6">
+
+                <h2 id="titolo"></h2>
+                <img id="poster" src="" class="img-fluid" alt="">
+
+            </div>
+
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        var titolo = document.querySelector('#titolo');
+        var poster = document.querySelector('#poster');
+
+        var btnCerca = document.querySelector('#btnCerca');
+
+        btnCerca.onclick = function() {
+            let filmTitle = document.querySelector('#filmTitle').value;
+
+            const URL = `http://www.omdbapi.com/?t=${filmTitle}&apikey=4214e970`;
+
+            var mioFilm = {};
+
+            fetch(URL)
+                .then(data => {
+                    return data.json()
+                })
+                .then(response => {
+                    console.log(response);
+                    mioFilm = response;
+
+                    console.log('Il mio film è: ', mioFilm);
+
+                    console.log(mioFilm.Title);
+
+                    if (mioFilm.Title == undefined) {
+                        titolo.innerHTML = 'Film non trovato';
+                        poster.setAttribute('src', '');
+                    } else {
+                        stampaFilm(response.Title, response.Poster);
+                    }
+                })
+                .catch(error => {
+                    console.log(errore);
+                });
+
+            function stampaFilm(titoloFilm, posterFilm) {
+                titolo.innerHTML = titoloFilm;
+                poster.setAttribute('src', posterFilm);
+            };
+        };
     </script>
 
 </body>
