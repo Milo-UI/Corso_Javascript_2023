@@ -52,3 +52,28 @@ a {
 .txtOrange {
 	color: orange;
 }
+
+body {
+	overflow: hidden;
+}
+
+label {
+	display: block;
+	margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+	display: block;
+	width: 100%;
+	padding: 0.375rem 0.75rem;
+	margin-bottom: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	appearance: none;
+	border-radius: 0.25rem;
+}

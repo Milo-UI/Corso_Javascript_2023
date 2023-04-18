@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 - 06 - JSON Server</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <h1>Classe</h1>
+
+    <h2>Docenti</h2>
+
+    <ul id="listaDocenti"></ul>
+
+    <h2>Studenti</h2>
+
+    <h3>Registra nuovo studente</h3>
+
+    <label for="nome">Nome</label>
+    <input type="text" id="nome" name="nome">
+
+    <label for="tipologia">Tipologia</label>
+    <select name="tipologia" id="tipologia">
+        <option value="-1" selected>Scegli tipologia</option>
+        <option value="studente">Studente</option>
+        <option value="corsista">Corsista</option>
+        <option value="apprendista">Apprendista</option>
+        <option value="assunto">Assunto</option>
+    </select>
+
+    <button id="btn">Iscrivi studente</button>
+
+    <ul id="listaStudenti"></ul>
+
+    <!-- <div id="demo"></div> -->
+
+    <script>
+        // var demo = document.querySelector('#demo');
+        var listaDocenti = document.querySelector('#listaDocenti');
+        var listaStudenti = document.querySelector('#listaStudenti');
+
+        const URLEndPoint = 'http://localhost:3000/docenti';
+
+        fetch(URLEndPoint)
+            .then(data => {
+                return data.json();
+            })
+            .then(response => {
+                console.log(response);
+
+                mostraDati(response)
+            });
+
+        function mostraDati(response) {
+            response.forEach(docente => {
+                var id = docente.id;
+                var nome = docente.nome;
+                var tipologia = docente.tipologia;
+
+                listaDocenti.innerHTML += '<li>Docente: ' + id + ' ' + nome + ' ' + tipologia + '</li>';
+            });
+        };
+
+
+        const URLStudenti = 'http://localhost:3000/studenti';
+
+        fetch(URLStudenti)
+            .then(data => {
+                return data.json();
+            })
+            .then(studenti => {
+                console.log(studenti);
+
+                mostraStudenti(studenti);
+            })
+
+        function mostraStudenti(studenti) {
+            studenti.forEach(studente => {
+                var id = studente.id;
+                var nome = studente.nome;
+                var tipologia = studente.tipologia;
+
+                listaStudenti.innerHTML += '<li>Studente ' + id + ': ' + nome + ' - ' + tipologia + '</li>';
+            });
+        };
+
+        function aggiungiNuovoStudente() {
+            var nome = document.querySelector('#nome').value;
+            var tipologia = document.querySelector('#tipologia').value;
+
+            var nuovoStudente = {
+                nome: nome,
+                tipologia: tipologia
+            };
+
+            fetch(URLStudenti, {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify(nuovoStudente)
+                })
+                .then(data => {
+                    data.json();
+                })
+                .then(response => {
+                    console.log("Ok! Registrazione avvenuta!");
+                    console.log(response);
+                })
+        };
+
+        var btn = document.querySelector('#btn');
+        btn.addEventListener('click', aggiungiNuovoStudente)
+
+        /*
+            Aggiungere nella stampa sulla pagina web degli studenti, un bottone per ogni singolo studente che al click elimina lo studente in questione
+            CONSIGLIO: endpoint DELETE http://localhost:3000/studenti/"id studente"
+            Controllare che vengano inseriti tutti i dati, altrimenti non viene eseguita la request. Ricordate: event.preventDefault()
+
+            GET — Ottieni dati dall'API. Ad esempio, ottieni un utente Twitter in base al suo nome utente.
+            POST — Invia i dati all'API. Ad esempio, crea un nuovo record utente con nome, età e indirizzo e-mail.
+            PUT —Aggiorna un record esistente con nuovi dati. Ad esempio, aggiorna l'indirizzo email di un utente.
+            DELETE — Rimuovere un record. Ad esempio, eliminare un utente dal database.
+        */
+    </script>
+</body>
+
+</html>
