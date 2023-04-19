@@ -1,44 +1,45 @@
 {
-  "docenti": [
-    {
-      "id": 1,
-      "nome": "Dario",
-      "tipologia": "docente"
-    },
-    {
-      "id": 2,
-      "nome": "Milo",
-      "tipologia": "docente"
-    },
-    {
-      "id": 3,
-      "nome": "Davide",
-      "tipologia": "docente"
-    }
-  ],
-  "studenti": [
-    {
-      "id": 1,
-      "nome": "Giada",
-      "tipologia": "studente"
-    },
-    {
-      "id": 2,
-      "nome": "Caterina",
-      "tipologia": "studente"
-    },
-    {
-      "id": 3,
-      "nome": "Luca",
-      "tipologia": "studente"
-    },
-    {
-      "nome": "Matteo",
-      "tipologia": "corsista",
-      "id": 4
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+	"docenti": [
+		{
+			"id": 1,
+			"nome": "Dario",
+			"tipologia": "docente"
+		},
+		{
+			"id": 2,
+			"nome": "Milo",
+			"tipologia": "docente"
+		},
+		{
+			"id": 3,
+			"nome": "Davide",
+			"tipologia": "docente"
+		}
+	],
+	"studenti": [
+		{
+			"id": 1,
+			"nome": "Giada",
+			"tipologia": "studente"
+		},
+		{
+			"id": 2,
+			"nome": "Caterina",
+			"tipologia": "studente"
+		},
+		{
+			"id": 3,
+			"nome": "Luca",
+			"tipologia": "studente"
+		},
+		{
+			"nome": "Matteo",
+			"tipologia": "corsista",
+			"id": 4
+		}
+	],
+	"profile": {
+		"name": "typicode"
+	},
+	"utenti": []
 }
