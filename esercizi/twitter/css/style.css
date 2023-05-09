@@ -1,0 +1,35 @@
+body {
+	color: #14171a;
+}
+
+.bg-twitter {
+	background-color: #1da1f2;
+}
+
+.text-twitter {
+	color: #1da1f2;
+}
+
+main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.box-attivita {
+	padding: 4rem;
+	border-radius: 1rem;
+	background-color: white;
+}
+
+.avatar {
+	max-width: 30px;
+	border-radius: 50%;
+	margin-right: 0.6rem;
+}
+
+.prev-tweet {
+	padding: 1rem;
+	border: 1px solid #d6d6d6;
+}
