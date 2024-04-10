@@ -16,7 +16,7 @@
 
     <!-- 
         Creare una finta interfaccia di Twitter dalla quale ci si può registrare (username: min 4 caratteri, max 15; password: minus, maius, numero, car speciale, minimo 8 caratteri).
-        Una volta registrato, l'utente viene salvato in local storage e sarà reindirizzato a una pagina, che riporterà il suo username, dove potra scrivere e postare un tweet di massimo 50 caratteri.
+        Una volta registrato, l'utente viene salvato in local storage e sarà reindirizzato a una pagina, che riporterà il suo username, dove potrà scrivere e postare un tweet di massimo 50 caratteri.
         All'invio del Tweet, questo verrà stampato sotto al form con tanto di nome utente e ora di pubblicazione. Sarà anche presente un bottone di logout che al click prenderà username, password e tutti i tweet postati dall'utente e li salverà su un file json (finto db) tramite json-server.
 
         Punti in più se:
@@ -39,7 +39,7 @@
                         <form action="tweet.html" id="registraForm" method="get">
                             <!-- Username -->
                             <div class="mb-3">
-                                <label for="username">Username</label>
+                                <label for="username" class="form-label">Username</label>
                                 <input type="text" id="username" name="username" class="form-control">
                                 <!-- Check errori -->
                                 <p class="text-danger">
@@ -48,7 +48,7 @@
                             </div>
                             <!-- Password -->
                             <div class="mb-3">
-                                <label for="password">Password</label>
+                                <label for="password" class="form-label">Password</label>
                                 <input type="password" id="password" name="password" class="form-control">
                                 <!-- Check errori -->
                                 <ul id="passwordCheck" class="text-danger"></ul>

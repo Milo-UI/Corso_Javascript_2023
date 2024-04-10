@@ -9,7 +9,7 @@ var registraForm = document.querySelector('#registraForm');
 
 /* -------------------- Controlli per username e password ------------------- */
 const FORMATO_USER = /^[a-zA-Z0-9]{4,15}$/;
-const FORMATO_PW = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/i;
+const FORMATO_PW = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&]{8,}$/i;
 
 function checkUser() {
     if (username.value.length < 4) {
